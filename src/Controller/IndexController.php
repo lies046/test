@@ -11,6 +11,6 @@ class IndexController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(): Response
     {
-        return $this->json(['username' => 'test']);
+        return $this->json(['username' => 'test'], 200, [],[]);
     }
 }
