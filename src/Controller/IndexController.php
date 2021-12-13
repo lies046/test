@@ -8,9 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
+    /**
+     * @throws \Exception
+     */
     #[Route('/', name: 'index')]
     public function index(): Response
     {
-        return $this->json(['username' => 'test'], 200, [],[]);
+        $test = ['test' => 'hello world'];
+        if (json_encode($test)){
+            return $this->json(json_encode($test), 200, [],[]);
+        }else{
+           return throw new \Exception('エラーだよ');
+        }
     }
 }
