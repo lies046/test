@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Subject;
 use App\Repository\SubjectRepository;
+use Doctrine\ORM\EntityManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,5 +32,16 @@ class IndexController extends AbstractController
             'previous' => $offset - SubjectRepository::PAGINATOR_PER_PAGE,
             'next' => min(count($subs), $offset + SubjectRepository::PAGINATOR_PER_PAGE)
         ]);
+    }
+
+    #[Route('/test', name: 'test', methods: 'GET')]
+    public function test(Request $request, PaginatorInterface $paginator, SubjectRepository $subjectRepository): Response
+    {
+       $pagination = $paginator->paginate(
+           $subjectRepository->getquery(),
+           $request->query->getInt('page', 1),
+           2
+       );
+       return $this->render('index/test.html.twig',['pagination' => $pagination]);
     }
 }

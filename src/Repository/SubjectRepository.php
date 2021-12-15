@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Subject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -36,6 +37,16 @@ class SubjectRepository extends ServiceEntityRepository
 
         return new Paginator($query);
 
+    }
+
+    /**
+     * @return Query
+     */
+    public function getquery(): Query
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'DESC')
+            ->getQuery();
     }
 
 
