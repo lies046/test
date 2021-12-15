@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\SubjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,13 +13,12 @@ class IndexController extends AbstractController
      * @throws \Exception
      */
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(SubjectRepository $subjectRepository): Response
     {
-        $test = ['test' => 'hello world'];
-        if (json_encode($test)){
-            return $this->json(json_encode($test), 200, [],[]);
-        }else{
-           return throw new \Exception('エラーだよ');
-        }
+        $subs = $subjectRepository->findAll();
+
+        return $this->render('index/index.html.twig',[
+            'subs' => $subs
+        ]);
     }
 }

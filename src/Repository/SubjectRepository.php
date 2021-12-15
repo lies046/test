@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Subject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,37 +15,28 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class SubjectRepository extends ServiceEntityRepository
 {
+    public const PAGINATOR_PER_PAGE = 2;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Subject::class);
     }
 
-    // /**
-    //  * @return Subject[] Returns an array of Subject objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param int $offset
+     * @return Paginator
+     */
+    public function getPagination(int $offset): Paginator
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery();
 
-    /*
-    public function findOneBySomeField($value): ?Subject
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return new Paginator($query);
+
     }
-    */
+
+
 }
