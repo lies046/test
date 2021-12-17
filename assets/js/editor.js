@@ -21,12 +21,12 @@ import 'tinymce/plugins/image';
 /* import './plugins/powerpaste/plugin'; */
 /* import './plugins/powerpaste/js/wordimport'; */
 
-export function init(){
+export function init(selector,dirname){
     tinymce.init({
-        selector: '#subject_title',
+        selector: '#' + selector,
         plugins: 'image',
         toolbar: 'image',
-        images_upload_url: 'http://localhost/public/',
+        images_upload_url: 'http://localhost/public/?dir=' + dirname,
         skin:false,
         content_css: false,
 
