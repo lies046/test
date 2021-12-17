@@ -25,7 +25,8 @@ export function init(selector,dirname){
     tinymce.init({
         selector: '#' + selector,
         plugins: 'image',
-        toolbar: 'image',
+        external_plugins:{'ruby': './js/plugins/ruby/plugin.min.js'},
+        toolbar: 'image ruby',
         images_upload_url: 'http://localhost/public/?dir=' + dirname,
         skin:false,
         content_css: false,
