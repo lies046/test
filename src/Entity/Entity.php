@@ -6,22 +6,25 @@ use App\Repository\EntityRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class Entity
+ */
 abstract class Entity
 {
-        /**
+    /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    protected $created_at;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $updated_at;
+    protected $updated_at;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $status;
+    protected $status;
 
 
     public function getCreatedAt(): ?\DateTimeInterface
