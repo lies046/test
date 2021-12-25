@@ -14,10 +14,6 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('text')
-            ->add('created_at')
-            ->add('updated_at')
-            ->add('status')
-            ->add('author')
         ;
     }
 
