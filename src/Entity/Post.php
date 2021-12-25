@@ -29,7 +29,7 @@ class Post extends Entity
     private $text;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -63,12 +63,12 @@ class Post extends Entity
         return $this;
     }
 
-    public function getAuthor(): ?user
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    public function setAuthor(?user $author): self
+    public function setAuthor(?User $author): self
     {
         $this->author = $author;
 
