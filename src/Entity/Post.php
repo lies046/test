@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
-class Post
+class Post extends Entity
 {
     /**
      * @ORM\Id
