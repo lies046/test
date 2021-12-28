@@ -12,31 +12,27 @@
                 <td>{{ post.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>タイトル</th>
                 <td>{{ post.title }}</td>
             </tr>
             <tr>
-                <th>Text</th>
-                <td>{{ post.text }}</td>
+                <th>本文</th>
+                <td>{{ post.text | raw }}</td>
             </tr>
             <tr>
-                <th>Created_at</th>
+                <th>作成日</th>
                 <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Updated_at</th>
+                <th>更新日</th>
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Status</th>
-                <td>{{ post.status }}</td>
+                <th>状態</th>
+                <td>{{ post.status == 1 ? '公開' : '非公開' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('post_index') }}">back to list</a>
-
-    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
-
-    {{ include('post/_delete_form.html.twig') }}
+    <a href="{{ path('post_index') }}">一覧へ</a>
 {% endblock %}
