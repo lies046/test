@@ -10,7 +10,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity('slug')
+ * @UniqueEntity("slug")
  */
 class Post extends Entity
 {
@@ -97,8 +97,7 @@ class Post extends Entity
 
     public function computeSlug(SluggerInterface $slugger)
     {
-        if (!$this->slug){
-            $this->slug = (string)$slugger->slug((string) strtotime('now'))->lower();
-        }
+        $id = $this->getAuthor()->getId();
+        $this->slug = (string) $slugger->slug($id . strtotime('now'));
     }
 }

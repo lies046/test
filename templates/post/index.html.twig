@@ -23,8 +23,8 @@
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.status == 1 ? '公開' : '非公開' }}</td>
                 <td>
-                <a href="{{ path('post_show', {'id': post.id}) }}"><button type="button" class="btn btn-secondary">詳細</button></a>
-                <a href="{{ path('post_edit', {'id': post.id}) }}"><button type="button" class="btn btn-info">編集</button></a>
+                <a href="{{ path('post_show', {'slug': post.slug}) }}"><button type="button" class="btn btn-secondary">詳細</button></a>
+                <a href="{{ path('post_edit', {'slug': post.slug}) }}"><button type="button" class="btn btn-info">編集</button></a>
 {#                    <a href="{{ path('post_delete', {'id': post.id}) }}"><button type="button" class="btn btn-danger">削除</button></a>#}
                     {{ include('post/_delete_form.html.twig') }}
                 </td>

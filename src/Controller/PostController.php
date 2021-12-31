@@ -46,7 +46,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'post_show', methods: ['GET'])]
+    #[Route('/{slug}', name: 'post_show', methods: ['GET'])]
     public function show(Post $post): Response
     {
         return $this->render('post/show.html.twig', [
@@ -54,7 +54,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'post_edit', methods: ['GET', 'POST'])]
+    #[Route('/{slug}/edit', name: 'post_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PostType::class, $post);
@@ -72,7 +72,7 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'post_delete', methods: ['POST'])]
+    #[Route('/{slug}', name: 'post_delete', methods: ['POST'])]
     public function delete(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
