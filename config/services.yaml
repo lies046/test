@@ -26,3 +26,7 @@ services:
     App\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
+    App\EntityListener\PostEntityListener:
+         tags:
+         - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\Conference' }
+         - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\Conference' }
