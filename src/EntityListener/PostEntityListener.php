@@ -19,9 +19,4 @@ class PostEntityListener
     {
         $post->computeSlug($this->slugger);
     }
-
-    public function preUpdate(Post $post, LifecycleEventArgs $event)
-    {
-        $post->computeSlug($this->slugger);
-    }
 }
