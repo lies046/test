@@ -21,6 +21,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "bootstrap-tagsinput": "^0.7.1",
         "tinymce": "^5.10.2"
     }
 }
