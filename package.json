@@ -21,6 +21,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "bloodhound-js": "^1.2.3",
         "bootstrap-tagsinput": "^0.7.1",
         "tinymce": "^5.10.2",
