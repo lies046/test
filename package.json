@@ -21,7 +21,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "bloodhound-js": "^1.2.3",
         "bootstrap-tagsinput": "^0.7.1",
-        "tinymce": "^5.10.2"
+        "tinymce": "^5.10.2",
+        "typeahead": "^0.2.2"
     }
 }

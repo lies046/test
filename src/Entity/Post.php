@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -41,6 +43,21 @@ class Post extends Entity
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
+
+
+    //手書きで追加、make:migrationでjoinTableのテーブル作成された
+    /**
+     * @var Tag[]|Collection
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", cascade={"persist"})
+     * @ORM\JoinTable(name="post_tag")
+     */
+    private Collection $tags;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -99,5 +116,24 @@ class Post extends Entity
     {
         $id = $this->getAuthor()->getId();
         $this->slug = (string) $slugger->slug($id . strtotime('now'));
+    }
+
+    public function addTag(Tag ...$tags): void
+    {
+        foreach ($tags as $tag) {
+            if (!$this->tags->contains($tag)) {
+                $this->tags->add($tag);
+            }
+        }
+    }
+
+    public function removeTag(Tag $tag): void
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    public function getTags(): Collection
+    {
+        return $this->tags;
     }
 }

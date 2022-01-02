@@ -17,7 +17,7 @@ class PostType extends AbstractType
             ->add('title')
             ->add('text', null, ['required' => false])
             ->add('tags', TagsInputType::class, [
-                'label' => 'label.tags',
+                'label' => 'タグ',
                 'required' => false,
             ])
             ->add('submit', SubmitType::class, ['attr' => ['class' => 'btn btn-primary'], 'label' => '保存'])
