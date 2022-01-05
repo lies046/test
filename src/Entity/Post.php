@@ -114,8 +114,7 @@ class Post extends Entity
 
     public function computeSlug(SluggerInterface $slugger)
     {
-        $id = $this->getAuthor()->getId();
-        $this->slug = (string) $slugger->slug($id . strtotime('now'));
+        $this->slug = (string) $slugger->slug(uniqid());
     }
 
     public function addTag(Tag ...$tags): void
