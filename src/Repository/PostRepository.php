@@ -25,7 +25,9 @@ class PostRepository extends ServiceEntityRepository
     public function findByTest($value)
     {
         return $this->createQueryBuilder('p')
+            ->select('count(p.author) as count')
             ->andWhere('p.status = 1')
+            ->groupBy('p.author')
             ->getQuery()
             ->getResult()
         ;
