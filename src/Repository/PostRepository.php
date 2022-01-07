@@ -22,7 +22,7 @@ class PostRepository extends ServiceEntityRepository
     // /**
     //  * @return Post[] Returns an array of Post objects
     //  */
-    public function findByTest($value)
+    public function findByTest()
     {
         return $this->createQueryBuilder('p')
             ->select('count(p.author) as count')
