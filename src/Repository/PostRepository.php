@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -24,13 +25,15 @@ class PostRepository extends ServiceEntityRepository
     //  */
     public function findByTest()
     {
-        return $this->createQueryBuilder('p')
-            ->select('count(p.author) as count')
+        $qb = $this->createQueryBuilder('p')
+            ->select('count(p.author) as count, p.title')
             ->andWhere('p.status = 1')
-            ->groupBy('p.author')
+            ->groupBy('p.title')
             ->getQuery()
             ->getResult()
         ;
+        return $qb;
+//        return array_column($qb->getArrayResult(), 'title', 'count');
     }
 
     /*
