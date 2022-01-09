@@ -14,8 +14,6 @@ class IndexController extends AbstractController
     {
 
         $postList = $postRepository->findBy(['status' => 1]);
-        $test = $postRepository->findByTest();
-        dd($test);
         return $this->render('index/index.html.twig', [
             'postList' => $postList
         ]);
