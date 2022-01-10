@@ -11,6 +11,7 @@ class LikeController extends AbstractController
     #[Route('/like', methods: ['GET','POST'])]
     public function likeAction(Request $request)
     {
+        dd(json_decode($request->getContent(), true));
         $data = json_decode($request->getContent(), true);
       dd($data);
     }

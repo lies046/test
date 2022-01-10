@@ -5,8 +5,7 @@ $('.like').on('click', function (){
         type: "POST",
         dataType: "json",
         data:{
-            id: postId,
-            name: "hello"
+            post_id: postId,
         }
     })
 
