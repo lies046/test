@@ -1,12 +1,12 @@
 $('.like').on('click', function (){
     let postId = $(this).attr('id');
     $.ajax({
-        url: '/like',
-        type: 'post',
-        dataType: 'json',
+        url: "/like",
+        type: "POST",
+        dataType: "json",
         data:{
-            'id': postId,
-            'name': 'hello'
+            id: postId,
+            name: "hello"
         }
     })
 
