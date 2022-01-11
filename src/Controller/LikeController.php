@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LikeController extends AbstractController
 {
-    #[Route('/like', methods: ['GET','POST'])]
+    #[Route('/like', methods: 'POST')]
     public function likeAction(Request $request)
     {
-        dd(json_decode($request->getContent(), true));
+        dd($request->request->get('post_id'));
         $data = json_decode($request->getContent(), true);
       dd($data);
     }
