@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class LikeController extends AbstractController
 {
     #[Route('/like', methods: 'POST')]
-    public function likeAction(Request $request)
+    public function likeAction(Request $request, PostRepository $postRepository)
     {
-        dd($request->request->get('post_id'));
-        $data = json_decode($request->getContent(), true);
-      dd($data);
+        $postId = $request->request->get('post_id');
+        $post = $postRepository->find($postId);
+        dd($post);
     }
 }
