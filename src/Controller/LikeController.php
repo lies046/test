@@ -14,6 +14,6 @@ class LikeController extends AbstractController
     {
         $postId = $request->request->get('post_id');
         $post = $postRepository->find($postId);
-        dd($post);
+        return $this->json('success');
     }
 }
