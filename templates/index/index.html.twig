@@ -8,10 +8,15 @@
     {% for post in postList %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             {{ post.title }}
-        <span><i class="far fa-heart like" id="{{ post.id }}"></i></span>
+        <span>
+            {% if is_granted('ROLE_USER') %}
+            <i class="far fa-heart like" id="{{ post.id }}"></i>
+            {% endif %}
+        </span>
     </li>
     {% endfor %}
 </ul>
+        <input type="hidden" id="user_id" data-user-id="{{ app.user.id }}">
     </div>
 {% endblock %}
 {% block javascripts %}
