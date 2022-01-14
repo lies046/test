@@ -16,7 +16,7 @@
     </li>
     {% endfor %}
 </ul>
-        <input type="hidden" id="user_id" data-user-id="{{ app.user.id }}">
+        <input type="hidden" id="user_id"  {% if app.user %}data-user-id="{{ app.user.id }}"{% endif %}>
     </div>
 {% endblock %}
 {% block javascripts %}
