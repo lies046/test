@@ -28,7 +28,11 @@ class LikeController extends AbstractController
         $like->setPost($post)
             ->setLikeUser($user);
         $entityManager->persist($like);
-        $entityManager->flush();
-        return $this->json('success');
+        try {
+            $entityManager->flush();
+            return $this->json('success');
+        }catch (\Exception $e){
+            return $this->json($e);
+        }
     }
 }
