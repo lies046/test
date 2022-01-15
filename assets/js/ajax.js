@@ -1,4 +1,4 @@
-$('.like').on('click', function (){
+$(document).on('click', '.like', function (){
     let postId = $(this).attr('id');
     let userId = $('#user_id').data('user-id');
     $.ajax({
@@ -11,7 +11,8 @@ $('.like').on('click', function (){
         }
     }).done(function (data){
         if (data === 'success'){
-            $('#'+ postId).removeClass('far fa-heart like').addClass('fas fa-heart dislike')
+            $('#'+ postId).removeClass('far fa-heart like').addClass('fas fa-heart test')
+            return false;
         }
     })
 
