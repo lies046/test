@@ -9,6 +9,10 @@ $('.like').on('click', function (){
             "post_id": postId,
             "user_id": userId
         }
+    }).done(function (data){
+        if (data === 'success'){
+            $('#'+ postId).removeClass('far fa-heart like').addClass('fas fa-heart dislike')
+        }
     })
 
 })

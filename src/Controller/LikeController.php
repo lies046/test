@@ -20,16 +20,16 @@ class LikeController extends AbstractController
                                UserRepository $userRepository,
     EntityManagerInterface $entityManager)
     {
-        $like = new Like();
-        /** @var Post $post */
-        $post = $postRepository->find($request->request->get('post_id'));
-        /** @var User $user */
-        $user = $userRepository->find($request->request->get('user_id'));
-        $like->setPost($post)
-            ->setLikeUser($user);
-        $entityManager->persist($like);
+//        $like = new Like();
+//        /** @var Post $post */
+//        $post = $postRepository->find($request->request->get('post_id'));
+//        /** @var User $user */
+//        $user = $userRepository->find($request->request->get('user_id'));
+//        $like->setPost($post)
+//            ->setLikeUser($user);
+//        $entityManager->persist($like);
         try {
-            $entityManager->flush();
+//            $entityManager->flush();
             return $this->json('success');
         }catch (\Exception $e){
             return $this->json($e);
