@@ -22,15 +22,17 @@ class LikeController extends AbstractController
     {
 //        $like = new Like();
 //        /** @var Post $post */
-//        $post = $postRepository->find($request->request->get('post_id'));
+        $post = $postRepository->find($request->request->get('post_id'));
 //        /** @var User $user */
 //        $user = $userRepository->find($request->request->get('user_id'));
 //        $like->setPost($post)
 //            ->setLikeUser($user);
 //        $entityManager->persist($like);
+        $postId = $post->getId();
+        $data = ['postId' => $postId, 'result' => 'success'];
         try {
 //            $entityManager->flush();
-            return $this->json('success');
+            return $this->json($data);
         }catch (\Exception $e){
             return $this->json($e);
         }
