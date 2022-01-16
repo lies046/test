@@ -15,26 +15,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class LikeController extends AbstractController
 {
     #[Route('/like', methods: 'POST')]
-    public function likeAction(Request $request,
-                               PostRepository $postRepository,
-                               UserRepository $userRepository,
-    EntityManagerInterface $entityManager)
+    public function likeAction(Request                $request,
+                               PostRepository         $postRepository,
+                               UserRepository         $userRepository,
+                               EntityManagerInterface $entityManager)
     {
-//        $like = new Like();
-//        /** @var Post $post */
+        $like = new Like();
+        /** @var Post $post */
         $post = $postRepository->find($request->request->get('post_id'));
-//        /** @var User $user */
-//        $user = $userRepository->find($request->request->get('user_id'));
-//        $like->setPost($post)
-//            ->setLikeUser($user);
-//        $entityManager->persist($like);
+        /** @var User $user */
+        $user = $userRepository->find($request->request->get('user_id'));
+        $like->setPost($post)
+            ->setLikeUser($user);
+        $entityManager->persist($like);
         $postId = $post->getId();
+        $entityManager->flush();
         $data = ['postId' => $postId, 'result' => 'success'];
-        try {
-//            $entityManager->flush();
-            return $this->json($data);
-        }catch (\Exception $e){
-            return $this->json($e);
-        }
+        return $this->json($data);
     }
 }
