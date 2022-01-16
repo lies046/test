@@ -10,7 +10,7 @@
             {{ post.title }}
         <span>
             {% if is_granted('ROLE_USER') %}
-            <i class="far fa-heart like" id="{{ post.id }}"></i>
+            <i class="far fa-heart like" data-post-id="{{ post.id }}"></i>
             {% endif %}
         </span>
     </li>

@@ -11,8 +11,9 @@ $(document).on('click', '.like', function (){
         }
     }).done(function (data){
         if (data === 'success'){
-            $('#'+ postId).removeClass('far fa-heart like').addClass('fas fa-heart test')
-            return false;
+            console.log(postId);
+            // console.log('[data-post-id="' + postId + '"]')
+            $('[data-post-id="' + postId + '"]').removeClass('far fa-heart like').addClass('fas fa-heart dislike')
         }
     })
 
