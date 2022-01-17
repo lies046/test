@@ -7,18 +7,24 @@
         <a href="{{ path('app_login') }}">ログイン</a>
 
         <ul class="list-group">
-    {% for post in postList %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            {{ post.title }}
-        <span>
+            {% for post in postList %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ post.title }}
+                    <span>
             {% if is_granted('ROLE_USER') %}
-            <i class="far fa-heart like" data-post-id="{{ post.id }}"></i>
+                {% for like in userLikeList %}
+                    {% if like.post.id == post.id %}
+                        <i class="fas fa-heart dislike" data-post-id="{{ post.id }}"></i>
+                    {% else %}
+                        <i class="far fa-heart like" data-post-id="{{ post.id }}"></i>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         </span>
-    </li>
-    {% endfor %}
-</ul>
-        <input type="hidden" id="user_id"  {% if app.user %}data-user-id="{{ app.user.id }}"{% endif %}>
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="hidden" id="user_id" {% if app.user %}data-user-id="{{ app.user.id }}"{% endif %}>
     </div>
 {% endblock %}
 {% block javascripts %}
