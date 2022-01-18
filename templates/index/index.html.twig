@@ -18,6 +18,9 @@
                     {% else %}
                         <i class="far fa-heart like" data-post-id="{{ post.id }}"></i>
                     {% endif %}
+                {% else %}
+                    <i class="far fa-heart like" data-post-id="{{ post.id }}"></i>
+
                 {% endfor %}
             {% endif %}
         </span>
