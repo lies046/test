@@ -25,25 +25,12 @@ class LikeController extends AbstractController
         $post = $postRepository->find($request->request->get('post_id'));
         /** @var User $user */
         $user = $userRepository->find($request->request->get('user_id'));
-        $flag = $request->request->get('like');
-        $data = [];
-        switch ($like){
-            case 'like':
-                $like->setPost($post)
-                    ->setLikeUser($user);
-                $entityManager->persist($like);
-                $postId = $post->getId();
-                $entityManager->flush();
-                $data = ['postId' => $postId, 'result' => 'success'];
-                break;
-            case 'dislike':
-                $postId = $post->getId();
-                $entityManager->remove($post);
-                $entityManager->flush();
-                $data = ['postId' => $postId, 'result' => 'success'];
-                break;
-
-        }
+        $like->setPost($post)
+            ->setLikeUser($user);
+        $entityManager->persist($like);
+        $postId = $post->getId();
+        $entityManager->flush();
+        $data = ['postId' => $postId, 'result' => 'success'];
         return $this->json($data);
     }
 }

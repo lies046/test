@@ -32,7 +32,7 @@ $(document).on('click', '.dislike', function (){
         }
     }).done(function (data){
         if (data.result === 'success'){
-            $('[data-post-id="' + data.postId + '"]').removeClass('fas fa-heart like').addClass('far fa-heart dislike')
+            $('[data-post-id="' + data.postId + '"]').removeClass('fas fa-heart like').addClass('far fa-heart like')
         }
     })
 
