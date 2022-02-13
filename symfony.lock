@@ -38,12 +38,10 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "2.4",
-            "ref": "032f52ed50a27762b78ca6a2aaf432958c473553"
+            "ref": "06a5dfe6c1b12da89276b72ed281be757d24c8a0"
         },
         "files": [
             "./config/packages/doctrine.yaml",
-            "./config/packages/prod/doctrine.yaml",
-            "./config/packages/test/doctrine.yaml",
             "./src/Entity/.gitignore",
             "./src/Repository/.gitignore"
         ]
@@ -342,7 +340,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "5.4",
-            "ref": "d4131812e20853626928e73d3effef44014944c0"
+            "ref": "3cd216a4d007b78d8554d44a5b1c0a446dab24fb"
         },
         "files": [
             "./config/packages/cache.yaml",
@@ -497,7 +495,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "5.3",
-            "ref": "3307d76caa2d12fb10ade57975beb3d8975df396"
+            "ref": "09b5e809bd7a992061febd05b797c64a2d93b5cd"
         },
         "files": [
             "./config/packages/security.yaml"
@@ -522,7 +520,7 @@
         "version": "v6.0.0"
     },
     "symfony/string": {
-        "version": "v6.0.0"
+        "version": "v6.0.2"
     },
     "symfony/translation": {
         "version": "6.0",
@@ -598,7 +596,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.9",
-            "ref": "10e67e9dc87263a25007130ee59975a36ea624fe"
+            "ref": "1723ab94a3ba021bcd69f6b907492668821c857f"
         },
         "files": [
             "./assets/app.js",
@@ -606,9 +604,6 @@
             "./assets/controllers.json",
             "./assets/controllers/hello_controller.js",
             "./assets/styles/app.css",
-            "./config/packages/assets.yaml",
-            "./config/packages/prod/webpack_encore.yaml",
-            "./config/packages/test/webpack_encore.yaml",
             "./config/packages/webpack_encore.yaml",
             "./package.json",
             "./webpack.config.js"
